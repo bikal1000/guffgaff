@@ -1,11 +1,17 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const chats = require('./data/data');
-const colors = require("colors");
 const connectDB = require('./config/db');
+const colors = require("colors");
+const userRoutes = require('./routes/userRoutes');
+const { notFound, errorHandler } = require('./middleware/errorMiddleware');
+
 
 // instance of express variable
 const app = express();
+
+// accept JSON Data
+app.use(express.json());
 
 dotenv.config();
 
@@ -16,14 +22,11 @@ app.get('/', (req, res) => {
     res.send('This is test');
 })
 
-app.get('/api/chat', (req, res) => {
-    res.send(chats);
-})
+app.use('/api/user', userRoutes);
 
-app.get('/api/chat/:id', (req, res) => {
-    const singleChat = chats.find(c => c._id === req.params.id);
-    res.send(singleChat);
-})
+// Error Handling middlewares
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 

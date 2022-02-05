@@ -27,10 +27,10 @@ const HomePage = () => {
                     </TabList>
                     <TabPanels>
                         <TabPanel>
-                            <Login></Login>
+                            <Login />
                         </TabPanel>
                         <TabPanel>
-                            <Signup></Signup>
+                            <Signup />
                         </TabPanel>
                     </TabPanels>
                 </Tabs>
