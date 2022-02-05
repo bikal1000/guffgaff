@@ -6,8 +6,7 @@ import { Route } from 'react-router-dom';
 
 function App() {
     return (
-        <div>
-            <Button colorScheme='blue'>Button</Button>
+        <div className='App'>
             <Route exact path='/' component={HomePage} />
             <Route path='/chat' component={ChatPage} />
         </div>
